@@ -1,5 +1,6 @@
 {
   "name": "tensornote-vscode",
+  "packageManager": "pnpm@11.24.0",
   "displayName": "TensorNote",
   "description": "A native VS Code research workspace for TensorNote Markdown, Derivation, and Jupyter Sidecars.",
   "version": "0.3.0",
