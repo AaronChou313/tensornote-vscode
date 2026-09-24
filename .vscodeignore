@@ -16,3 +16,4 @@ node_modules/.cache/**
 *.vsix
 pnpm-lock.yaml
 pnpm-workspace.yaml
+SHA256SUMS
