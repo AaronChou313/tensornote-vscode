@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.1 — 品牌图标更新
+
+- 更新扩展商店 Logo，采用新的文档轮廓设计。
+- 重绘 Activity Bar 单色图标，提升小尺寸和不同主题下的辨识度。
+
 ## 0.3.0 — 首个独立发行版
 
 - Split the extension into a standalone project and repository boundary.

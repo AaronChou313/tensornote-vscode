@@ -18,16 +18,21 @@ TensorNote 不提供独立文件树，不复制 Git UI，不创建 Python 环境
 
 ### 2.1 安装插件
 
-1. 从 [GitHub Releases](https://github.com/AaronChou313/tensornote-vscode/releases/latest) 下载 `.vsix`。
-2. 在 VS Code 打开 **扩展**。
-3. 点击扩展面板右上角 **…**。
-4. 选择 **从 VSIX 安装…**，并选择下载的文件。
-5. 执行 **Developer: Reload Window**。
+推荐从 VS Code Marketplace 安装：
+
+1. 在 VS Code 打开 **扩展**。
+2. 搜索 **TensorNote**。
+3. 确认扩展标识符是 `aaronchou313.tensornote-vscode`，然后点击 **安装**。
+4. 安装或升级后执行 **Developer: Reload Window**。
+
+也可以直接打开 [TensorNote 的 VS Code Marketplace 页面](https://marketplace.visualstudio.com/items?itemName=aaronchou313.tensornote-vscode)。
+
+离线安装时，从 [GitHub Releases](https://github.com/AaronChou313/tensornote-vscode/releases/latest) 下载 `.vsix`，然后在扩展面板选择 **… → 从 VSIX 安装…**。
 
 命令行安装：
 
 ```bash
-code --install-extension tensornote-vscode-0.3.0.vsix --force
+code --install-extension tensornote-vscode-0.3.1.vsix --force
 ```
 
 ### 2.2 Jupyter 可选依赖

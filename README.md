@@ -26,10 +26,15 @@ TensorNote 是一个 Markdown-first 的科研学习 Workspace 插件。它只增
 
 ## 安装
 
-从 [GitHub Releases](https://github.com/AaronChou313/tensornote-vscode/releases/latest) 下载 `.vsix`，在 VS Code 中打开 **扩展**，选择右上角 **… → 从 VSIX 安装…**。也可以使用命令行：
+TensorNote 已发布到 VS Code Marketplace。推荐在 VS Code 中打开 **扩展**，搜索 **TensorNote**，确认扩展标识符为 `aaronchou313.tensornote-vscode`，然后点击 **安装**。
+
+- [打开 VS Code Marketplace 页面](https://marketplace.visualstudio.com/items?itemName=aaronchou313.tensornote-vscode)
+- 离线安装可从 [GitHub Releases](https://github.com/AaronChou313/tensornote-vscode/releases/latest) 下载 `.vsix`，再选择 **扩展 → … → 从 VSIX 安装…**。
+
+命令行安装本地 VSIX：
 
 ```bash
-code --install-extension tensornote-vscode-0.3.0.vsix --force
+code --install-extension tensornote-vscode-0.3.1.vsix --force
 ```
 
 安装或升级后执行 **Developer: Reload Window**。

@@ -15,10 +15,15 @@ The default README and [complete user guide](docs/USER_GUIDE.zh-CN.md) are curre
 
 ## Install
 
-Download the VSIX from [GitHub Releases](https://github.com/AaronChou313/tensornote-vscode/releases/latest), then use **Extensions → … → Install from VSIX…** in VS Code. Reload the window after installation.
+TensorNote is available on the VS Code Marketplace. Open **Extensions** in VS Code, search for **TensorNote**, verify the extension identifier is `aaronchou313.tensornote-vscode`, and select **Install**.
+
+- [Open the VS Code Marketplace page](https://marketplace.visualstudio.com/items?itemName=aaronchou313.tensornote-vscode)
+- For offline installation, download the VSIX from [GitHub Releases](https://github.com/AaronChou313/tensornote-vscode/releases/latest), then use **Extensions → … → Install from VSIX…**.
+
+To install a local VSIX from the command line:
 
 ```bash
-code --install-extension tensornote-vscode-0.3.0.vsix --force
+code --install-extension tensornote-vscode-0.3.1.vsix --force
 ```
 
 TensorNote never manages Python environments or kernels. Install the Microsoft Python and Jupyter extensions separately when executable Sidecars are needed.

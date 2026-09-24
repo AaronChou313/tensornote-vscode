@@ -3,7 +3,7 @@
   "packageManager": "pnpm@11.24.0",
   "displayName": "TensorNote",
   "description": "A native VS Code research workspace for TensorNote Markdown, Derivation, and Jupyter Sidecars.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "publisher": "aaronchou313",
   "icon": "resources/icon.png",
   "license": "Apache-2.0",
@@ -189,8 +189,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "check": "pnpm typecheck && pnpm test && pnpm build",
-    "package": "vsce package --no-dependencies",
-    "publish:marketplace": "vsce publish"
+    "package": "vsce package --no-dependencies"
   },
   "dependencies": {
     "@mdit/plugin-katex": "^1.1.1",
