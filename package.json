@@ -1,0 +1,213 @@
+{
+  "name": "tensornote-vscode",
+  "displayName": "TensorNote",
+  "description": "A native VS Code research workspace for TensorNote Markdown, Derivation, and Jupyter Sidecars.",
+  "version": "0.3.0",
+  "publisher": "aaronchou313",
+  "icon": "resources/icon.png",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/AaronChou313/tensornote-vscode.git"
+  },
+  "homepage": "https://github.com/AaronChou313/tensornote-vscode#readme",
+  "bugs": {
+    "url": "https://github.com/AaronChou313/tensornote-vscode/issues"
+  },
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other",
+    "Notebooks"
+  ],
+  "keywords": [
+    "markdown",
+    "reader",
+    "jupyter",
+    "research",
+    "notes",
+    "learning"
+  ],
+  "main": "./dist/extension.js",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "TensorNote Reader remains available, but Jupyter Sidecar execution is disabled until the VS Code Workspace is trusted."
+    }
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:tensornote.workspace",
+    "onCustomEditor:tensornote.reader",
+    "onCommand:tensornote.openCurrentFile",
+    "onCommand:tensornote.exportPdf"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "tensornote",
+          "title": "TensorNote",
+          "icon": "resources/tensornote.svg"
+        }
+      ]
+    },
+    "views": {
+      "tensornote": [
+        {
+          "id": "tensornote.workspace",
+          "name": "TensorNote"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "tensornote.openCurrentFile",
+        "title": "TensorNote: Open Current File",
+        "icon": "$(book)"
+      },
+      {
+        "command": "tensornote.openSource",
+        "title": "TensorNote: Open Markdown Source",
+        "icon": "$(code)"
+      },
+      {
+        "command": "tensornote.setDefaultReader",
+        "title": "TensorNote: Configure Workspace Default Reader"
+      },
+      {
+        "command": "tensornote.setEnabled",
+        "title": "TensorNote: Enable or Disable in This Workspace"
+      },
+      {
+        "command": "tensornote.refreshWorkspace",
+        "title": "TensorNote: Refresh Workspace Status",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "tensornote.openSettings",
+        "title": "TensorNote: Open Settings"
+      },
+      {
+        "command": "tensornote.exportPdf",
+        "title": "TensorNote: Export Current Note to PDF"
+      },
+      {
+        "command": "tensornote.openDocumentation",
+        "title": "TensorNote: Documentation"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "tensornote.reader",
+        "displayName": "TensorNote Reader",
+        "selector": [
+          {
+            "filenamePattern": "*.md"
+          }
+        ],
+        "priority": "option"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "tensornote.openCurrentFile",
+          "when": "resourceExtname == .md && activeCustomEditor != tensornote.reader",
+          "group": "navigation@10"
+        },
+        {
+          "command": "tensornote.openSource",
+          "when": "activeCustomEditor == tensornote.reader",
+          "group": "navigation@10"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "tensornote.openCurrentFile",
+          "when": "resourceExtname == .md",
+          "group": "navigation@10"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "tensornote.refreshWorkspace",
+          "when": "view == tensornote.workspace",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "TensorNote",
+      "properties": {
+        "tensornote.enabled": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "default": null,
+          "scope": "resource",
+          "description": "Enable or disable TensorNote for this Workspace. Null uses automatic detection: tensornote.yaml first, then Markdown Sidecars. User-level values are intentionally ignored."
+        },
+        "tensornote.defaultReader": {
+          "type": "boolean",
+          "default": false,
+          "scope": "resource",
+          "description": "Associate Markdown files with TensorNote Reader in this Workspace only."
+        },
+        "tensornote.sidecar.enabled": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "description": "Render Derivation and Jupyter Sidecars in TensorNote Reader for this Workspace."
+        },
+        "tensornote.jupyter.enabled": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "description": "Allow Jupyter Sidecars to open through the Microsoft Jupyter extension in this Workspace. TensorNote never manages kernels or Python environments."
+        },
+        "tensornote.reader.maxWidth": {
+          "type": "number",
+          "default": 920,
+          "scope": "resource",
+          "minimum": 640,
+          "maximum": 1400,
+          "description": "Maximum content width of the TensorNote Reader in pixels."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm build",
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build:extension": "node scripts/build.mjs extension",
+    "build:webview": "node scripts/build.mjs webview",
+    "build": "pnpm clean && pnpm build:extension && pnpm build:webview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "pnpm typecheck && pnpm test && pnpm build",
+    "package": "vsce package --no-dependencies",
+    "publish:marketplace": "vsce publish"
+  },
+  "dependencies": {
+    "@mdit/plugin-katex": "^1.1.1",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
+    "katex": "^0.18.7",
+    "markdown-it": "^15.0.2",
+    "mermaid": "^11.12.2",
+    "sanitize-html": "^2.17.0",
+    "yaml": "^2.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/sanitize-html": "^2.16.1",
+    "@types/vscode": "^1.100.0",
+    "@vscode/vsce": "^4.0.0",
+    "esbuild": "^0.25.12",
+    "typescript": "~5.9.3",
+    "vitest": "^4.0.14"
+  }
+}
